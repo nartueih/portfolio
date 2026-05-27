@@ -20,6 +20,10 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
+          script: |
+                where tar
+                tar --version
+                echo %PATH%
           source: "./*"
           target: "C:/inetpub/wwwroot"
           overwrite: true
