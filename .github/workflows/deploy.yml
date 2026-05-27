@@ -21,6 +21,6 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
           source: "./*"
-          target: "/C:/inetpub/wwwroot"
+          target: "C:/inetpub/wwwroot"
           overwrite: true
           strip_components: 1
