@@ -13,6 +13,20 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      # Debug VPS
+      - name: Debug VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            where tar
+            tar --version
+            echo %PATH%
+
+      # Upload files
       - name: Upload website to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -20,10 +34,6 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
-          script: |
-                where tar
-                tar --version
-                echo %PATH%
           source: "./*"
           target: "C:/inetpub/wwwroot"
           overwrite: true
