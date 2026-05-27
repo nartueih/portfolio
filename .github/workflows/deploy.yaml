@@ -13,7 +13,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Upload files to VPS
+      - name: Upload website to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -21,4 +21,6 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
           source: "./*"
-          target: "C:/inetpub/wwwroot"
+          target: "/C:/inetpub/wwwroot"
+          overwrite: true
+          strip_components: 1
