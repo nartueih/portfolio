@@ -20,5 +20,5 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           port: ${{ secrets.VPS_PORT }}
-          source: "."
+          source: "./*"
           target: "C:/inetpub/wwwroot"
